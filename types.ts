@@ -24,12 +24,3 @@ export enum AppStep {
   RESULT = 'RESULT',
   ERROR = 'ERROR'
 }
-
-declare global {
-  interface Window {
-    aistudio?: {
-      hasSelectedApiKey: () => Promise<boolean>;
-      openSelectKey: () => Promise<void>;
-    };
-  }
-}

@@ -25,13 +25,11 @@ const App: React.FC = () => {
 
     try {
       // API Key Check for Video Generation
-      // Accessing via window as any to prevent strict type checking issues if types.ts isn't picked up immediately
-      const aiStudio = (window as any).aistudio;
-      if (isVideo && aiStudio) {
-        const hasKey = await aiStudio.hasSelectedApiKey();
+      if (isVideo && window.aistudio) {
+        const hasKey = await window.aistudio.hasSelectedApiKey();
         if (!hasKey) {
           setLoadingMessage("비디오 생성을 위해 API 키 선택이 필요합니다...");
-          await aiStudio.openSelectKey();
+          await window.aistudio.openSelectKey();
           // Assuming successful selection if promise resolves
         }
       }
